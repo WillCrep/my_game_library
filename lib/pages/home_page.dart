@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:my_game_library/classes/sidebar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,10 +15,28 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController1;
   int _selectedIndex = 0;
+  int _selectedIndexBar = 0;
+  bool loading = true;
+  var sidebar;
   @override
   void initState() {
-    _tabController1 = TabController(length: 5, vsync: this);
+    _tabController1 = TabController(length: 5, vsync: this)
+      ..addListener(() {
+        setState(() {
+          _selectedIndexBar = _tabController1.index;
+          asingJson();
+        });
+      });
+    asingJson();
     super.initState();
+  }
+
+  void asingJson() async {
+    Future<String> response =
+        rootBundle.loadString('statics/sidebar_$_selectedIndexBar.json');
+    var data = json.decode(await response);
+    sidebar = Sidebar.fromJson(data);
+    loading = false;
   }
 
   @override
@@ -72,18 +94,19 @@ class _HomePageState extends State<HomePage>
               ),
             ),
             TabBar(
-                controller: _tabController1,
-                isScrollable: true,
-                unselectedLabelColor: Colors.grey[500],
-                labelStyle: const TextStyle(fontSize: 18),
-                indicatorWeight: 0.1,
-                tabs: const [
-                  Text('ALL'),
-                  Text('PC'),
-                  Text('OS X'),
-                  Text('PLAYSTATION'),
-                  Text('CONSOLES'),
-                ]),
+              controller: _tabController1,
+              isScrollable: true,
+              unselectedLabelColor: Colors.grey[500],
+              labelStyle: const TextStyle(fontSize: 18),
+              indicatorWeight: 0.1,
+              tabs: const [
+                Text('ALL'),
+                Text('PC'),
+                Text('CONSOLES'),
+                Text('OS X'),
+                Text('PLAYSTATION'),
+              ],
+            ),
             Container(
               padding: EdgeInsets.only(
                   right: MediaQuery.of(context).size.width * 0.01),
@@ -131,30 +154,32 @@ class _HomePageState extends State<HomePage>
                 Container(
                   height: MediaQuery.of(context).size.height * 0.6,
                   width: 60,
-                  child: Container(
-                      child: Column(
+                  child: Column(
                     children: [
                       Container(
                         height: MediaQuery.of(context).size.height * 0.5,
-                        child: ListView.builder(
-                            itemCount: 15,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                  ),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      iconSize: 30,
-                                      icon: const Icon(
-                                          Icons.access_time_filled_rounded)),
-                                ),
-                              );
-                            }),
+                        child: loading == true
+                            ? const Center(child: CircularProgressIndicator())
+                            : ListView.builder(
+                                itemCount: sidebar == null
+                                    ? 0
+                                    : sidebar.entitys.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(int.parse(
+                                              sidebar.entitys[index].color)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(8)),
+                                        ),
+                                        child: TextButton(
+                                            onPressed: () {},
+                                            child: Image.asset(
+                                                sidebar.entitys[index].image))),
+                                  );
+                                }),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -170,7 +195,7 @@ class _HomePageState extends State<HomePage>
                             )),
                       )
                     ],
-                  )),
+                  ),
                 ),
                 Expanded(
                   child:

@@ -1,0 +1,89 @@
+{
+    "entitys":[
+        {
+            "index": 1,
+            "image": "assets/gameboyadvance.png",
+            "color": "0xff267ADE"
+        },
+        {
+            "index": 2,
+            "image": "assets/gbgbc.png",
+            "color": "0xffFFFCFA"
+        },
+        {
+            "index": 3,
+            "image": "assets/nes.png",
+            "color": "0xffBAB9B8"
+        },
+        {
+            "index": 4,
+            "image": "assets/nintendo3ds.png",
+            "color": "0xffF59051"
+        },
+        {
+            "index": 5,
+            "image": "assets/nintendo64.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 6,
+            "image": "assets/nintendods.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 7,
+            "image": "assets/nintendogamecube.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 8,
+            "image": "assets/nintendoswitch.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 9,
+            "image": "assets/nintendowiiu.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 10,
+            "image": "assets/play1.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 11,
+            "image": "assets/play2.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 12,
+            "image": "assets/play3.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 13,
+            "image": "assets/play4.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 14,
+            "image": "assets/playgames.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 15,
+            "image": "assets/psp.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 16,
+            "image": "assets/snes.png",
+            "color": "0xffC4F941"
+        },
+        {
+            "index": 17,
+            "image": "assets/wii.png",
+            "color": "0xffC4F941"
+        }
+    ]
+}

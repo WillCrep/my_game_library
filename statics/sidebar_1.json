@@ -1,0 +1,29 @@
+{
+    "entitys":[
+        {
+            "index": 1,
+            "image": "assets/origin.png",
+            "color": "0xff267ADE"
+        },
+        {
+            "index": 2,
+            "image": "assets/uplay.png",
+            "color": "0xffFFFCFA"
+        },
+        {
+            "index": 3,
+            "image": "assets/steam.png",
+            "color": "0xffBAB9B8"
+        },
+        {
+            "index": 4,
+            "image": "assets/epicgames.png",
+            "color": "0xffF59051"
+        },
+        {
+            "index": 5,
+            "image": "assets/gogcom.png",
+            "color": "0xffC4F941"
+        }
+    ]
+}
