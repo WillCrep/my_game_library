@@ -198,14 +198,45 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 Expanded(
-                  child:
-                      TabBarView(controller: _tabController1, children: const [
-                    Center(
-                      child: Text(
-                        'all',
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    ),
+                  child: TabBarView(controller: _tabController1, children: [
+                    ListView.builder(
+                        itemCount: 20,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height * 0.01),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.25,
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Image.network(
+                                      'https://images.igdb.com/igdb/image/upload/t_thumb/co2adl.jpg'),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.25,
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Image.network(
+                                      'https://images.igdb.com/igdb/image/upload/t_thumb/co2adl.jpg'),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
                     Center(
                       child: Text(
                         'pc',
